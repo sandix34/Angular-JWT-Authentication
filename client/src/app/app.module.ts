@@ -1,15 +1,26 @@
+// modules natifs
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { LayoutModule } from './shared/layout/layout.module';
-import { AppRoutingModule } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+// modules
+import { LayoutModule } from './shared/layout/layout.module';
+
+// components
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
+
+// routing
+import { AppRoutingModule } from './app.routing';
+
+// services
+import { AuthService } from './shared/services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +35,12 @@ import { TopbarComponent } from './shared/components/topbar/topbar.component';
     BrowserAnimationsModule,
     LayoutModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
