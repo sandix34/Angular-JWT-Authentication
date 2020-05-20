@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const dotenv = require ('dotenv'); 
 dotenv.config ();
 const db = process.env.MONGODB_CONNECT
+const index = require('./routes/index');
 
 const app = express();
 
@@ -19,6 +20,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
+
+app.use(index);
 
 // connection à la base de donnée
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
