@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app.routing';
 
 // services
 import { AuthService } from './shared/services/auth.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AuthService } from './shared/services/auth.service';
     HomepageComponent,
     SignupComponent,
     SigninComponent,
-    TopbarComponent
+    TopbarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
