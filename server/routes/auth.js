@@ -1,11 +1,25 @@
 const router = require('express').Router();
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
-/*router.post('/signin', (req, res) => {
+const RSA_KEY_PRIVATE = fs.readFileSync('./rsa/key');
+
+router.post('/signin', (req, res) => {
   console.log(req.body);
-  res.json('signin ok !');
-})*/
+  User.findOne({'email': req.body.email}).exec((err, user) => {
+    if (user && bcrypt.compareSync(req.body.password, user.password)) {
+      const token = jwt.sign({}, RSA_KEY_PRIVATE, {
+        algorithm: 'RS256',
+        subject: user._id.toString()
+      })
+      res.status(200).json(token);
+    } else {
+      res.status(401).json('signin fail !');
+    }
+  })
+})
 
 router.post('/signup', (req,res) => {
   const newUser = new User({
