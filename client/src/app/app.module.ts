@@ -14,14 +14,16 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // routing
 import { AppRoutingModule } from './app.routing';
 
 // services
 import { AuthService } from './shared/services/auth.service';
-import { ProfileComponent } from './profile/profile.component';
 
+// guards
+import { AuthGuard } from './shared/authGuard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
