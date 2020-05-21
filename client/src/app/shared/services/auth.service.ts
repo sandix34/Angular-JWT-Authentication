@@ -48,5 +48,15 @@ export class AuthService {
         token: null
       });
     }
+    console.log(this.jwtToken.value);
   }
+
+  public logout(): void {
+    this.jwtToken.next({
+      isAuthenticated: false,
+        token: null
+    });
+    localStorage.removeItem('jwt');
+  }
+  
 }
