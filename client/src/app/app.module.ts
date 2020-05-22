@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // modules
 import { LayoutModule } from './shared/layout/layout.module';
@@ -26,6 +26,9 @@ import { UserService } from './shared/services/user.service';
 // guards
 import { AuthGuard } from './shared/authGuard/auth.guard';
 
+// interceptors
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,11 @@ import { AuthGuard } from './shared/authGuard/auth.guard';
     HttpClientModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     AuthService,
     UserService,
     AuthGuard
