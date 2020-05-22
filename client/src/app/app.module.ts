@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app.routing';
 
 // services
 import { AuthService } from './shared/services/auth.service';
+import { UserService } from './shared/services/user.service';
 
 // guards
 import { AuthGuard } from './shared/authGuard/auth.guard';
@@ -44,6 +45,7 @@ import { AuthGuard } from './shared/authGuard/auth.guard';
   ],
   providers: [
     AuthService,
+    UserService,
     AuthGuard
   ],
   bootstrap: [AppComponent]
