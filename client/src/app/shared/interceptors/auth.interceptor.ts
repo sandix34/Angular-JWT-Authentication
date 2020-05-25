@@ -10,10 +10,11 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem("jwt");
+    
     // si token on clone la requête actuelle en lui ajoutant un headers authorization contenant le token
     if (token) {
       const authReq = req.clone({
-        headers: req.headers.set("authorization", token),
+        headers: req.headers.set("authorization", token)
       });
       // et retourne la nouvelle requête
       return next.handle(authReq);

@@ -1,7 +1,7 @@
 <div class="my-5 py-5" fxLayout="row" fxLayoutAlign="center center">
   <mat-card>
     <mat-card-title>Mon compte</mat-card-title>
-    <!--le pipe async permet de subscribe et d'unsubscribe autaomatiquement à un Observable-->
+    <!--le pipe async permet de subscribe et d'unsubscribe automatiquement à un Observable-->
     <mat-card-content *ngIf="currentUser | async;let user;" fxLayout="column" fxLayoutGap="15px">
       <div>email : {{ user.email }}</div>
       <div>name : {{ user.name }}</div>
